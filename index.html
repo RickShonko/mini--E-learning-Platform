@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeLearn - Mini E-Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>VibeLearn</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Learn New Skills Online</h1>
+            <p>Discover a wide range of courses taught by industry experts. Start your learning journey today and unlock your potential.</p>
+            <button class="btn btn-primary">Explore Courses</button>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses">
+        <div class="container">
+            <h2 class="section-title">Featured Courses</h2>
+            <div class="courses-grid" id="coursesContainer">
+                <!-- Courses will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Details Modal -->
+    <div class="modal" id="courseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalCourseTitle">Course Title</h2>
+                <span class="close-modal" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="course-detail-image" id="modalCourseImage"></div>
+                <div class="course-info">
+                    <div class="course-details">
+                        <h3>About This Course</h3>
+                        <p id="modalCourseDescription">Course description will appear here.</p>
+                        
+                        <h3>What You'll Learn</h3>
+                        <ul class="modules-list" id="modalModulesList">
+                            <!-- Modules will be added dynamically -->
+                        </ul>
+                    </div>
+                    <div class="course-stats">
+                        <div class="stat-item">
+                            <span>Duration:</span>
+                            <span id="modalDuration">6 weeks</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Level:</span>
+                            <span id="modalLevel">Beginner</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Instructor:</span>
+                            <span id="modalInstructor">John Smith</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Enrolled:</span>
+                            <span id="modalEnrolled">1,245 students</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Rating:</span>
+                            <span id="modalRating">4.8/5</span>
+                        </div>
+                        <button class="btn-course btn-details" id="modalCompleteBtn" style="width: 100%; margin-top: 20px;">Mark as Completed</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal login-modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login to Your Account</h2>
+                <span class="close-modal" id="closeLoginModal">&times;</span>
+            </div>
+            <div class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">Login</button>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal login-modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create an Account</h2>
+                <span class="close-modal" id="closeSignupModal">&times;</span>
+            </div>
+            <div class="auth-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Create a password">
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">Sign Up</button>
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>VibeLearn</h3>
+                    <p>Empowering learners worldwide with accessible, high-quality education.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Data Science</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">Business</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@vibelearn.com</li>
+                        <li><i class="fas fa-phone"></i> +254 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Learning St, EduCity</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 VibeLearn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Course data
+        const courses = [
+            {
+                id: 1,
+                title: "Web Development Fundamentals",
+                category: "Web Development",
+                description: "Learn the basics of HTML, CSS, and JavaScript to build your first website.",
+                duration: "6 weeks",
+                level: "Beginner",
+                instructor: "Sarah Johnson",
+                enrolled: "1,245 students",
+                rating: "4.8/5",
+                image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                modules: [
+                    "Introduction to HTML",
+                    "CSS Styling and Layouts",
+                    "JavaScript Basics",
+                    "Building Responsive Websites",
+                    "Introduction to Web Hosting"
+                ],
+                completed: false
+            },
+            {
+                id: 2,
+                title: "Data Science Essentials",
+                category: "Data Science",
+                description: "Explore data analysis, visualization, and machine learning concepts.",
+                duration: "8 weeks",
+                level: "Intermediate",
+                instructor: "Michael Chen",
+                enrolled: "892 students",
+                rating: "4.7/5",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                modules: [
+                    "Python for Data Science",
+                    "Data Analysis with Pandas",
+                    "Data Visualization",
+                    "Introduction to Machine Learning",
+                    "Statistical Analysis",
+                    "Data Science Project"
+                ],
+                completed: false
+            },
+            {
+                id: 3,
+                title: "Digital Marketing Mastery",
+                category: "Marketing",
+                description: "Learn SEO, social media marketing, and content strategy to grow businesses.",
+                duration: "5 weeks",
+                level: "Beginner",
+                instructor: "Emily Rodriguez",
+                enrolled: "1,543 students",
+                rating: "4.9/5",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                modules: [
+                    "Introduction to Digital Marketing",
+                    "Search Engine Optimization (SEO)",
+                    "Social Media Marketing",
+                    "Content Marketing Strategy",
+                    "Email Marketing Campaigns",
+                    "Analytics and Performance Tracking"
+                ],
+                completed: false
+            }
+        ];
+
+        // DOM Elements
+        const coursesContainer = document.getElementById('coursesContainer');
+        const courseModal = document.getElementById('courseModal');
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const closeModal = document.getElementById('closeModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const closeSignupModal = document.getElementById('closeSignupModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const showSignup = document.getElementById('showSignup');
+        const showLogin = document.getElementById('showLogin');
+
+        // Render courses
+        function renderCourses() {
+            coursesContainer.innerHTML = '';
+            
+            courses.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'course-card';
+                courseCard.innerHTML = `
+                    <div class="course-image" style="background-image: url('${course.image}')"></div>
+                    <div class="course-content">
+                        <span class="course-category">${course.category}</span>
+                        <h3 class="course-title">${course.title}</h3>
+                        <p class="course-description">${course.description}</p>
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> ${course.duration}</span>
+                            <span><i class="fas fa-signal"></i> ${course.level}</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="btn-course btn-details" data-id="${course.id}">View Details</button>
+                            <button class="btn-course ${course.completed ? 'btn-completed' : 'btn-complete'}" data-id="${course.id}">
+                                ${course.completed ? 'Completed' : 'Mark Complete'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                coursesContainer.appendChild(courseCard);
+            });
+
+            // Add event listeners to course buttons
+            document.querySelectorAll('.btn-details').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const courseId = parseInt(e.target.getAttribute('data-id'));
+                    openCourseModal(courseId);
+                });
+            });
+
+            document.querySelectorAll('.btn-complete').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const courseId = parseInt(e.target.getAttribute('data-id'));
+                    markCourseComplete(courseId);
+                });
+            });
+        }
+
+        // Open course details modal
+        function openCourseModal(courseId) {
+            const course = courses.find(c => c.id === courseId);
+            if (!course) return;
+
+            document.getElementById('modalCourseTitle').textContent = course.title;
+            document.getElementById('modalCourseDescription').textContent = course.description;
+            document.getElementById('modalDuration').textContent = course.duration;
+            document.getElementById('modalLevel').textContent = course.level;
+            document.getElementById('modalInstructor').textContent = course.instructor;
+            document.getElementById('modalEnrolled').textContent = course.enrolled;
+            document.getElementById('modalRating').textContent = course.rating;
+            
+            const modalCourseImage = document.getElementById('modalCourseImage');
+            modalCourseImage.style.backgroundImage = `url('${course.image}')`;
+            
+            const modulesList = document.getElementById('modalModulesList');
+            modulesList.innerHTML = '';
+            
+            course.modules.forEach(module => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-play-circle module-icon"></i> ${module}`;
+                modulesList.appendChild(li);
+            });
+            
+            const completeBtn = document.getElementById('modalCompleteBtn');
+            completeBtn.textContent = course.completed ? 'Completed' : 'Mark as Completed';
+            completeBtn.className = `btn-course ${course.completed ? 'btn-completed' : 'btn-details'}`;
+            completeBtn.style.width = '100%';
+            completeBtn.style.marginTop = '20px';
+            
+            if (!course.completed) {
+                completeBtn.onclick = () => {
+                    markCourseComplete(courseId);
+                    courseModal.style.display = 'none';
+                };
+            } else {
+                completeBtn.onclick = null;
+            }
+            
+            courseModal.style.display = 'block';
+        }
+
+        // Mark course as completed
+        function markCourseComplete(courseId) {
+            const course = courses.find(c => c.id === courseId);
+            if (!course) return;
+            
+            course.completed = true;
+            renderCourses();
+            
+            // Show completion message
+            alert(`Congratulations! You've completed "${course.title}"`);
+        }
+
+        // Event Listeners
+        closeModal.addEventListener('click', () => {
+            courseModal.style.display = 'none';
+        });
+
+        closeLoginModal.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        closeSignupModal.addEventListener('click', () => {
+            signupModal.style.display = 'none';
+        });
+
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'block';
+        });
+
+        signupBtn.addEventListener('click', () => {
+            signupModal.style.display = 'block';
+        });
+
+        showSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            signupModal.style.display = 'block';
+        });
+
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.style.display = 'none';
+            loginModal.style.display = 'block';
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === courseModal) {
+                courseModal.style.display = 'none';
+            }
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (e.target === signupModal) {
+                signupModal.style.display = 'none';
+            }
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCourses();
+        });
+    </script>
+</body>
+</html>
